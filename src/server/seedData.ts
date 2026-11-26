@@ -1,4 +1,4 @@
-import type { AppStatePayload } from '../types';
+import type { AppStatePayload } from '../types.ts';
 
 export function createSeedState(): AppStatePayload {
   return {

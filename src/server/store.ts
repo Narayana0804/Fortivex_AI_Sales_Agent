@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import type { AppStatePayload } from '../types';
-import { createSeedState } from './seedData';
+import type { AppStatePayload } from '../types.ts';
+import { createSeedState } from './seedData.ts';
 
 const DATA_DIR = path.resolve(process.cwd(), 'data');
 const STORE_PATH = path.join(DATA_DIR, 'cadence-store.json');

@@ -5,7 +5,7 @@ import type {
   LeadStage,
   SentimentLabel,
   SupportedLanguageCode,
-} from '../types';
+} from '../types.ts';
 
 export const LANGUAGE_OPTIONS: Array<{
   code: SupportedLanguageCode;

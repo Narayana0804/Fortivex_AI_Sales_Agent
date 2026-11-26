@@ -2,21 +2,20 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createServer as createViteServer } from 'vite';
-import { loadState, resetState, saveState } from './src/server/store';
+import { loadState, resetState, saveState } from './src/server/store.ts';
 import {
   generateCallSummary,
   generateSalesAgentTurn,
   synthesizeVoiceSpeech,
   transcribeVoiceAudio,
-} from './src/server/geminiService';
-import { retrieveRelevantChunks } from './src/lib/ragEngine';
+} from './src/server/geminiService.ts';
+import { retrieveRelevantChunks } from './src/lib/ragEngine.ts';
 import {
   estimateArrFromTeamSize,
   findAvailableSlot,
   mergeBantQualification,
   normalizeSentimentLabel,
-} from './src/lib/salesEngine';
+} from './src/lib/salesEngine.ts';
 import type {
   CallRecord,
   CrmWebhookEvent,
@@ -24,7 +23,7 @@ import type {
   LeadRecord,
   SupportedLanguageCode,
   VoicePersona,
-} from './src/types';
+} from './src/types.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -664,6 +663,7 @@ async function startServer() {
 
   // Vite dev middleware or production static assets
   if (process.env.NODE_ENV !== 'production') {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -677,7 +677,7 @@ async function startServer() {
     });
   }
 
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Cadence Voice server listening on http://0.0.0.0:${PORT}`);
   });

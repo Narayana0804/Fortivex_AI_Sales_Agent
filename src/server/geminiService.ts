@@ -9,8 +9,8 @@ import type {
   SentimentLabel,
   SupportedLanguageCode,
   VoicePersona,
-} from '../types';
-import { LANGUAGE_OPTIONS } from '../lib/salesEngine';
+} from '../types.ts';
+import { LANGUAGE_OPTIONS } from '../lib/salesEngine.ts';
 
 let cachedClient: GoogleGenAI | null = null;
 let cachedBetaClient: GoogleGenAI | null = null;

@@ -1,4 +1,4 @@
-import type { KnowledgeDoc, RetrievedChunk } from '../types';
+import type { KnowledgeDoc, RetrievedChunk } from '../types.ts';
 
 const STOP_WORDS = new Set([
   'the',
